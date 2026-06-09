@@ -97,13 +97,17 @@ python ETL_World_Cup/etl_wc_local_ia.py
 
 📂 Estrutura do Repositório
 Plaintext
+
+```
+.
 ├── ETL_World_Cup/
 │   ├── db_wc/
 │   │   └── world_cups.csv          # Base de dados bruta (Extract)
-│   │
-│   └── etl_wc_local_ia.py          # Script principal Python (ETL + Multi-Load)
-│
-├── .env.example                    # Modelo de exemplo para configuração das chaves de conexão
-├── .gitignore                      # Proteção para não subir credenciais (.env) e venv/
+│   └── etl_wc_db_ia.py             # Script principal Python (ETL On-Premise, PostgreSQL)
+|   └── etl_wc_ia.py                # Script principal Python (ETL Cloud, Amazon RDS)
+|   └── etl_wc_local_ia.py          # Script principal Python (ETL Local File System)
+├── .env.example                    # Modelo para configuração das chaves de conexão
+├── .gitignore                      # Proteção para ignorar .env e venv/
 ├── ranking_top_3_copas.csv         # Destino 1: Arquivo final gerado (Local Load)
 └── README.md                       # Documentação do projeto
+```
