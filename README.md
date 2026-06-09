@@ -53,3 +53,57 @@ Como a API do Gemini na camada gratuita possui um limite estrito de **15 requisi
 ```bash
 git clone [https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git](https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git)
 cd NOME_DO_REPOSITORIO
+```
+
+### 2. Configurar o Ambiente Virtual e Dependências
+```bash
+# Criar o ambiente virtual
+python -m venv venv
+
+# Ativar o ambiente (Windows)
+.\venv\Scripts\activate
+
+# Instalar as bibliotecas necessárias
+pip install pandas google-genai sqlalchemy psycopg2-binary python-dotenv
+```
+
+### 3. Configurar as Variáveis de Ambiente
+Crie um arquivo chamado .env na raiz do projeto para armazenar os endpoints e dados de conexão de forma segura:
+
+Snippet de código
+# API Key do Gemini
+GEMINI_API_KEY=seu_token_do_gemini_aqui
+
+# Banco de Dados Local (PostgreSQL)
+LOCAL_DB_HOST=localhost
+LOCAL_DB_PORT=5432
+LOCAL_DB_NAME=seu_banco_local
+LOCAL_DB_USER=seu_usuario_local
+LOCAL_DB_PASS=sua_senha_local
+
+# Banco de Dados Cloud (Amazon RDS PostgreSQL)
+RDS_DB_HOST=seu-endpoint-rds.amazonaws.com
+RDS_DB_PORT=5432
+RDS_DB_NAME=seu_banco_rds
+RDS_DB_USER=seu_usuario_rds
+RDS_DB_PASS=sua_senha_rds
+
+### 4. Execução do Pipeline
+Execute o script principal:
+
+```bash
+python ETL_World_Cup/etl_wc_local_ia.py
+```
+
+📂 Estrutura do Repositório
+Plaintext
+├── ETL_World_Cup/
+│   ├── db_wc/
+│   │   └── world_cups.csv          # Base de dados bruta (Extract)
+│   │
+│   └── etl_wc_local_ia.py          # Script principal Python (ETL + Multi-Load)
+│
+├── .env.example                    # Modelo de exemplo para configuração das chaves de conexão
+├── .gitignore                      # Proteção para não subir credenciais (.env) e venv/
+├── ranking_top_3_copas.csv         # Destino 1: Arquivo final gerado (Local Load)
+└── README.md                       # Documentação do projeto
